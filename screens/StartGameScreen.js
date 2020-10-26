@@ -8,10 +8,12 @@ import {View,
     Alert} 
 from 'react-native'
 
+import BodyText from '../components/BodyText'
 import Card from '../components/Card'
 import Input from '../components/Input'
 import Colors from '../constants/colors'
 import NumberContainer from '../components/NumberContainer'
+import MainButton from '../components/MainButton'
 
 
 const StartGameScreen = (props) => {
@@ -47,7 +49,8 @@ const StartGameScreen = (props) => {
         <Card style={styles.summaryContainer}>
             <Text>You Selected</Text>
             <NumberContainer>{selectedNumber}</NumberContainer>
-            <Button title="Start Game" onPress={() => props.onStartGame(selectedNumber)} />
+            <MainButton onPress={() => props.onStartGame(selectedNumber)}>Start Game</MainButton>
+            {/* <Button title="Start Game" onPress={() => props.onStartGame(selectedNumber)} /> */}
         </Card>
     }
     return ( 
@@ -55,12 +58,12 @@ const StartGameScreen = (props) => {
         <View style={styles.screen}>
             <Text style={styles.title}>Start a New Game</Text>
             <Card style={styles.inputContainer}>
-                <Text>Enter a Number</Text>
+                <BodyText>Enter a Number</BodyText>
                 <Input style={styles.input} 
                 blurOnSubmit 
                 autoCapitalize="none" 
                 autoCorrect={false} 
-                keyboardType="number-pad" 
+                keyboardType="numeric" 
                 maxLength={2} 
                 onChangeText={numberInputHandler}
                 value={enteredValue} />
@@ -101,7 +104,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
-        marginVertical: 10
+        marginVertical: 10,
+        fontFamily: 'open-sans-bold'
     },
     button: {
         width: 100
